@@ -15,20 +15,11 @@ function App() {
     <CityProvider>
     <div className="App">
         <Navbar/>
-        <div className="row mt-5">
-          <div className="col-md-2"></div>
-          <div className="col-md-8">
-            <div className="display_section">
-            <Input/>
-            </div>
-          
-            <div className="display_section">
-            <Display/>
-            </div>
-          
-          </div>
-          <div className="col-md-2"></div>
+        <div className="display-content">
+        <Input/>
+        <Display/>
         </div>
+        
        
     </div>
     </CityProvider>

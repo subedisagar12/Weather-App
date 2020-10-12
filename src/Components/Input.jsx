@@ -10,7 +10,7 @@ const Input=()=>{
 
     const submit=(e)=>{
         e.preventDefault()
-        setCity([...city,data])
+        setCity([...city,data.toLowerCase()])
         setData("")
 
     }

@@ -9,8 +9,46 @@
 .city-input:focus{
   box-shadow: none !important;
 }
-.display_section{
-  display: flex;
-  justify-content: center;
+.cross{
+  position: absolute;
+  top:5px;
+  right: 10px;
+  
+}
+
+.cross:hover{
+  cursor: pointer;
+}
+.display-content{
+  display:flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+margin-top: 5rem;
+}
+
+.my-card{
+  display: flex;
+  margin-top: 10px;
+  background: gray;
+  padding:20px;
+  border-radius: 20px;
+  width:20rem;
+  color:white;
+  height: auto;
+  min-height: 8rem;
+  position: relative;
+}
+.left{
+  width: 50%;
+}
+.right{
+  width: 50%;
+  text-align: center;
+  
+}
+
+hr{
+  background: wheat;
+
 }
