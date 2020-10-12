@@ -7,25 +7,32 @@ const [data,setData]=useState([])
 
 let key="1c04477bdb8a2ccf4108a91014ad6b36"
 useEffect(()=>{
+    async function getWeather(){
+        let info=[]
+        let res=[]
+       await axios.all(city.map(item=>axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${item}&appid=${key}`))).then(axios.spread(function(...res){
+            info.push(res)
+            console.log(res)
+          
+        }))
+        info[0].map(item=>res.push(item.data))
+       setData(res)  
+    }
+    getWeather()
    
-   async function getWeather(){
-        await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city[0]}&appid=${key}`).then(data=>setData([data.data]))
-   }
-    
-   getWeather()
-},[])
+},[city])
 
-console.log(data)
-        if(city.length===0){
+
+        if(city.length===0 || data===undefined){
             return(
-                <h4>No City Added</h4>
+                <h4>Loading..........</h4>
             )
         }
 
         else{
             return(
                 <div>
-                    <h4>{data.name}</h4>
+                    {data.map((item,id)=><h4 key={id}>{item.name}</h4>)}
                 </div>
             )
         }
