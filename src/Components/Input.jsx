@@ -11,6 +11,7 @@ const Input=()=>{
     const submit=(e)=>{
         e.preventDefault()
         setCity([...city,data])
+        setData("")
 
     }
     return(

@@ -14,7 +14,7 @@ useEffect(()=>{
             info.push(res)
             console.log(res)
           
-        }))
+        })).catch(e=>console.log(e))
         info[0].map(item=>res.push(item.data))
        setData(res)  
     }
