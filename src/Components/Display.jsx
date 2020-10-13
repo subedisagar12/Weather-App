@@ -7,8 +7,8 @@ const [data,setData]=useState([])
 
 let key="1c04477bdb8a2ccf4108a91014ad6b36"
 
-const deleteCity=(cit)=>{
-    let cities=city.filter(res=>res.toLowerCase()!==cit)
+const deleteCity=(id)=>{
+    let cities=city.filter(res=>city.indexOf(res)!==id)
     setCity(cities)
 }   
 useEffect(()=>{
@@ -17,9 +17,9 @@ useEffect(()=>{
       
        await axios.all(city.map(item=>axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${item}&appid=${key}&units=metric`))).then(axios.spread(function(...res){
             info.push(res)
-            console.log(res)
+       
           
-        })).catch(e=>console.log(e))
+    })).catch(e=>console.log(e) )
        
        setData(info[0])  
     }
@@ -27,10 +27,10 @@ useEffect(()=>{
    
 },[city])
 
-console.log(data)
+
         if(city.length===0 || data===undefined || city===null){
             return(
-                <h4></h4>
+                <h4 className="mt-4">No City Added</h4>
             )
         }
 
@@ -40,7 +40,7 @@ console.log(data)
 
                     {data.map((item,id)=>
                     <div className="my-card" key={id}>
-                        <div className="cross" onClick={()=>deleteCity(item.data.name.toLowerCase())}>&times;</div>
+                        <div className="cross" onClick={()=>deleteCity(id)}>&times;</div>
                         <div className="left">
                             <img src={`http://openweathermap.org/img/wn/${item.data.weather[0].icon}@2x.png`} alt=""/>
                         </div>
